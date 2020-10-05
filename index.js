@@ -1,14 +1,11 @@
 var people = [
 	{ firstName: "Adam", lastName: "Collins", picture: "Pictures/Adam.png" },
-	{
-		firstName: "Kimberly",
-		lastName: "Collins",
-		picture: "Pictures/Kimberly.jpg",
-	},
-  { firstName: 'Charlie', lastName: 'Rogers', picture: 'Pictures/Charlie.jpg' },
+	{ firstName: "Kimberly", lastName: "Collins", picture: "Pictures/Kimberly.jpg" },
+  	{ firstName: 'Charlie', lastName: 'Rogers', picture: 'Pictures/Charlie.jpg' },
 	{ firstName: "Alex", lastName: "Ayon", picture: "Pictures/Alex.jpg" },
 	{ firstName: "Tanner", lastName: "Smith", picture: "Pictures/Tanner.jpg" },
 	{ firstName: "Chris", lastName: "Tse", picture: "Pictures/Chris.jpg" },
+	{ firstName: "John", lastName: "Jordan", picture: "Pictures/JohnJ.jpg" },
 ];
 
 var person;
