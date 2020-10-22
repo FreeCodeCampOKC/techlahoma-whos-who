@@ -7,7 +7,7 @@ var people = [
 	{ firstName: "Chris", lastName: "Tse", picture: "Pictures/Chris.jpg" },
 	{ firstName: "John", lastName: "Jordan", picture: "Pictures/JohnJ.jpg" },
 	{ firstName: "Mandi", lastName: "Howell", picture: "Pictures/MandiH.jpg" },
-	{ firstName: "Andre", lastName: "Butler", picture: "Pictures/Andre.jpg" }
+	{ firstName: "Andre", lastName: "Butler", picture: "Pictures/Andre.png" }
 ];
 
 var person;
