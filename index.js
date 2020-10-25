@@ -1,7 +1,7 @@
 var people = [
 	{ firstName: "Adam", lastName: "Collins", picture: "Pictures/Adam.png", githubUsername: "obuadam" },
 	{ firstName: "Kimberly", lastName: "Collins", picture: "Pictures/Kimberly.jpg", githubUsername: "kacollins" },
-  	{ firstName: "Charlie", lastName: "Rogers", picture: "Pictures/Charlie.jpg", githubUsername: "MisterC-Rogers" },
+	{ firstName: "Charlie", lastName: "Rogers", picture: "Pictures/Charlie.jpg", githubUsername: "MisterC-Rogers" },
 	{ firstName: "Alex", lastName: "Ayon", picture: "Pictures/Alex.jpg", githubUsername: "alex-code4okc" },
 	{ firstName: "Tanner", lastName: "Smith", picture: "Pictures/Tanner.jpg", githubUsername: "stephentannersmith" },
 	{ firstName: "Chris", lastName: "Tse", picture: "Pictures/Chris.jpg", githubUsername: "chris-tse" },
@@ -10,24 +10,11 @@ var people = [
 	{ firstName: "Andre", lastName: "Butler", picture: "Pictures/Andre.png", githubUsername: "abutler6588" }
 ];
 
+loadRemainingPeople();
+
 var person;
 getPerson();
 updateScore();
-
-loadOptions(
-	people
-		.map((x) => x.firstName)
-		.filter(unique)
-		.sort(),
-	document.getElementById("firstName")
-);
-loadOptions(
-	people
-		.map((x) => x.lastName)
-		.filter(unique)
-		.sort(),
-	document.getElementById("lastName")
-);
 
 document.getElementById("check").addEventListener("click", check);
 document.getElementById("skip").addEventListener("click", skip);
@@ -80,6 +67,12 @@ function win() {
 }
 
 function loadOptions(list, select) {
+	//clear the list first
+	var length = select.options.length;
+	for (i = length - 1; i >= 0; i--) {
+		select.options[i] = null;
+	}
+	
 	for (i = 0; i < list.length; i++) {
 		var opt = document.createElement("option");
 		opt.text = list[i];
@@ -107,6 +100,7 @@ function check() {
 		resultElement.classList.add("alert-success");
 
 		people.find(({ firstName, lastName }) => firstName === person.firstName && lastName === person.lastName).done = "1";
+		loadRemainingPeople();
 		getPerson();
 		updateScore();
 	} else if (firstNameSelected === person.firstName || lastNameSelected === person.lastName) {
@@ -147,4 +141,23 @@ function cheat(advance) {
 	}
 
 	return person.firstName + " " + person.lastName;
+}
+
+function loadRemainingPeople() {
+	var remainingPeople = people.filter((x) => !x.done)
+
+	loadOptions(
+		remainingPeople
+			.map((x) => x.firstName)
+			.filter(unique)
+			.sort(),
+		document.getElementById("firstName")
+	);
+	loadOptions(
+		remainingPeople
+			.map((x) => x.lastName)
+			.filter(unique)
+			.sort(),
+		document.getElementById("lastName")
+	);
 }
