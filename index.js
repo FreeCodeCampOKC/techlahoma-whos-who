@@ -1,21 +1,8 @@
+loadRemainingPeople();
+
 var person;
 getPerson();
 updateScore();
-
-loadOptions(
-	people
-		.map((x) => x.firstName)
-		.filter(unique)
-		.sort(),
-	document.getElementById("firstName")
-);
-loadOptions(
-	people
-		.map((x) => x.lastName)
-		.filter(unique)
-		.sort(),
-	document.getElementById("lastName")
-);
 
 document.getElementById("check").addEventListener("click", check);
 document.getElementById("skip").addEventListener("click", skip);
@@ -68,6 +55,12 @@ function win() {
 }
 
 function loadOptions(list, select) {
+	//clear the list first
+	var length = select.options.length;
+	for (i = length - 1; i >= 0; i--) {
+		select.options[i] = null;
+	}
+	
 	for (i = 0; i < list.length; i++) {
 		var opt = document.createElement("option");
 		opt.text = list[i];
@@ -95,6 +88,7 @@ function check() {
 		resultElement.classList.add("alert-success");
 
 		people.find(({ firstName, lastName }) => firstName === person.firstName && lastName === person.lastName).done = "1";
+		loadRemainingPeople();
 		getPerson();
 		updateScore();
 	} else if (firstNameSelected === person.firstName || lastNameSelected === person.lastName) {
@@ -135,4 +129,23 @@ function cheat(advance) {
 	}
 
 	return person.firstName + " " + person.lastName;
+}
+
+function loadRemainingPeople() {
+	var remainingPeople = people.filter((x) => !x.done)
+
+	loadOptions(
+		remainingPeople
+			.map((x) => x.firstName)
+			.filter(unique)
+			.sort(),
+		document.getElementById("firstName")
+	);
+	loadOptions(
+		remainingPeople
+			.map((x) => x.lastName)
+			.filter(unique)
+			.sort(),
+		document.getElementById("lastName")
+	);
 }
