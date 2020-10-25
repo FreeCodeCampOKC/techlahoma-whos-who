@@ -38,10 +38,16 @@
                     <div class="center" id="score">
                         <ul class="list-group" style="width: 200px;">
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Mode:
-                                <div>
-                                    <input type="radio" name="mode" id="mode" value="Easy" checked="true">Easy</input>
-                                    <input type="radio" name="mode" id="mode" value="Hard">Hard</input>
+                                <div class="modetooltip modecontainer">
+                                    Mode:
+                                    <div class="moderadiobuttons">
+                                        <input type="radio" name="mode" id="mode" value="Easy" checked="true">Easy</input>
+                                        <input type="radio" name="mode" id="mode" value="Hard">Hard</input>
+                                    </div>
+                                    <span class="modetooltiptext">
+                                        <div>Easy: Items are removed from the list.</div>
+                                        <div>Hard: All items remain in the list.</div>
+                                    </span>
                                 </div>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
