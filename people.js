@@ -7,5 +7,6 @@ var people = [
 	{ "firstName": "Chris", "lastName": "Tse", "picture": "Pictures/Chris.jpg", "githubUsername": "chris-tse" },
 	{ "firstName": "John", "lastName": "Jordan", "picture": "Pictures/JohnJ.jpg", "githubUsername": "john-jordan" },
 	{ "firstName": "Mandi", "lastName": "Howell", "picture": "Pictures/MandiH.jpg", "githubUsername": "allst896" },
-	{ "firstName": "Andre", "lastName": "Butler", "picture": "Pictures/Andre.png", "githubUsername": "abutler6588" }
+	{ "firstName": "Andre", "lastName": "Butler", "picture": "Pictures/Andre.png", "githubUsername": "abutler6588" },
+	{ "firstName": "Ryan", "lastName": "Johnson", "picture": "Pictures/Ryan.jpg", "githubUsername": ""}
 ]
