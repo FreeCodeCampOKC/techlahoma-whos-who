@@ -31,7 +31,6 @@ function getPerson() {
 
 function win() {
 	var pictured = people
-		.sort((x, y) => x.firstName.localeCompare(y.firstName))
 		.filter((x) => x.picture)
 		.map((x) => x.firstName + " " + x.lastName)
 		.join("<br>");
@@ -61,7 +60,7 @@ function loadOptions(list, select) {
 	for (i = length - 1; i >= 0; i--) {
 		select.options[i] = null;
 	}
-
+	
 	for (i = 0; i < list.length; i++) {
 		var opt = document.createElement("option");
 		opt.text = list[i];
@@ -134,7 +133,7 @@ function cheat(advance) {
 
 function loadRemainingPeople() {
 	var modeSelection = getModeSelection();
-
+	
 	//if mode is set to Hard, remainingPeople will include everyone
 	//otherwise, it will only include people who are not yet marked as done.
 	var remainingPeople = people.filter((x) => modeSelection == "Hard" || !x.done);
