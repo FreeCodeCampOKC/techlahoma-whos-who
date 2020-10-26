@@ -14,3 +14,37 @@ p {
 .header {
     font-size: 2rem;
 }
+
+.modecontainer {
+    width: 200px;
+}
+.moderadiobuttons {
+    float: right;
+}
+
+.modetooltip {
+    position: relative;
+    display: inline-block;
+    visibility: visible;
+  }
+  
+.modetooltip .modetooltiptext {
+    visibility: hidden;
+    width: 300px;
+    background-color: rgb(59, 59, 59);
+    color: white;
+    padding: 10px;
+    text-align: left;
+    border-radius: 2px;
+    position: absolute;
+    z-index: 1;
+
+    bottom: 100%;
+    left: 50%;
+    margin-left: -150px;
+  }
+  
+  .modetooltip:hover .modetooltiptext {
+    visibility: visible;
+    
+  }

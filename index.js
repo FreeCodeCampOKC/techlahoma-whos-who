@@ -132,7 +132,11 @@ function cheat(advance) {
 }
 
 function loadRemainingPeople() {
-	var remainingPeople = people.filter((x) => !x.done)
+	var modeSelection = getModeSelection();
+	
+	//if mode is set to Hard, remainingPeople will include everyone
+	//otherwise, it will only include people who are not yet marked as done.
+	var remainingPeople = people.filter((x) => modeSelection == "Hard" || !x.done);
 
 	loadOptions(
 		remainingPeople
@@ -148,4 +152,19 @@ function loadRemainingPeople() {
 			.sort(),
 		document.getElementById("lastName")
 	);
+}
+
+function getModeSelection() {
+	var modeRadios = document.getElementsByName("mode");
+	var modeSelection = "Easy";
+
+	for (let index = 0; index < modeRadios.length; index++) {
+		const radio = modeRadios[index];
+
+		if (radio.checked) {
+			modeSelection = radio.value;
+		}
+	}
+
+	return modeSelection;
 }
