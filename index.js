@@ -31,6 +31,7 @@ function getPerson() {
 
 function win() {
 	var pictured = people
+		.sort((x, y) => x.firstName.localeCompare(y.firstName))
 		.filter((x) => x.picture)
 		.map((x) => x.firstName + " " + x.lastName)
 		.join("<br>");
