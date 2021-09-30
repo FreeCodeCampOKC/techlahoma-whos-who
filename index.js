@@ -7,6 +7,12 @@ updateScore();
 document.getElementById("check").addEventListener("click", check);
 document.getElementById("skip").addEventListener("click", skip);
 
+/**
+ * Gets list of people from people.js, if user runs out of possibilities
+ * then win() is called
+ *
+ * @method getPerson
+ */
 function getPerson() {
 	var possibilities = people.filter((x) => x.picture && !x.done && !x.skip);
 
@@ -29,6 +35,11 @@ function getPerson() {
 	}
 }
 
+/**
+ * Method for displaying results of winning the game
+ *
+ * @method win
+ */
 function win() {
 	var pictured = people
 		.sort((x, y) => x.firstName.localeCompare(y.firstName))
@@ -55,6 +66,16 @@ function win() {
 	document.getElementById("score").style.display = "none";
 }
 
+/**
+ * Method used to load options for the user to choose from
+ * when they are selecting names
+ *
+ * @method loadOptions
+ * @param {Array} list is an array of people
+ * @param {Method} select is return value from the method
+ * document.getElementById(), which is used to fetch people
+ * by their 'firstName' and 'lastName'
+ */
 function loadOptions(list, select) {
 	//clear the list first
 	var length = select.options.length;
@@ -70,6 +91,15 @@ function loadOptions(list, select) {
 	}
 }
 
+/**
+ * Array method used to return unique values in array filter
+ *
+ * @param value is the value stored in the array, so if filtering by firstName,
+ * then the value would be 'Bob'
+ * @param index is the current index value on the filter array
+ * @param self is the array of values we are filtering
+ * @returns {boolean}
+ */
 function unique(value, index, self) {
 	return self.indexOf(value) === index;
 }
@@ -78,6 +108,11 @@ var successMessages = ["You got it!", "Great job!"];
 var halfRightMessages = ["So close!", "You're half right!"];
 var failureMessages = ["Try again!", "Not even close!", "Did you even try?"];
 
+/**
+ * This method is used to the check answer given by the user
+ *
+ * @method check
+ */
 function check() {
 	var firstNameSelected = document.getElementById("firstName").value;
 	var lastNameSelected = document.getElementById("lastName").value;
@@ -101,6 +136,12 @@ function check() {
 	}
 }
 
+/**
+ * This allows the user to skip the current person they're trying
+ * to guess in the game
+ *
+ * @method skip
+ */
 function skip() {
 	people.find(({ firstName, lastName }) => firstName === person.firstName && lastName === person.lastName).skip = "1";
 	var resultElement = document.getElementById("result");
@@ -109,6 +150,11 @@ function skip() {
 	getPerson();
 }
 
+/**
+ * This removes any alert styling whenever relevant
+ *
+ * @method removeResultStyles
+ */
 function removeResultStyles() {
 	var resultElement = document.getElementById("result");
 	resultElement.classList.remove("alert-success");
@@ -116,11 +162,22 @@ function removeResultStyles() {
 	resultElement.classList.remove("alert-danger");
 }
 
+/**
+ * This updates the users current score
+ *
+ * @method updateScore
+ */
 function updateScore() {
 	document.getElementById("done").innerHTML = people.filter((x) => x.done).length;
 	document.getElementById("left").innerHTML = people.filter((x) => x.picture && !x.done).length;
 }
 
+/**
+ * A method used for CHEATING
+ *
+ * @param {Any} advance is a param that is needed for CHEATING
+ * @returns {string}
+ */
 function cheat(advance) {
 	document.getElementById("firstName").value = person.firstName;
 	document.getElementById("lastName").value = person.lastName;
@@ -132,6 +189,12 @@ function cheat(advance) {
 	return person.firstName + " " + person.lastName;
 }
 
+/**
+ * This method loads the remaining people that the user
+ * has not yet guessed
+ *
+ * @method loadRemainingPeople
+ */
 function loadRemainingPeople() {
 	var modeSelection = getModeSelection();
 
@@ -155,6 +218,12 @@ function loadRemainingPeople() {
 	);
 }
 
+/**
+ * This allows the user to switch between easy and hard more
+ *
+ * @method getModeSelection
+ * @returns {string} - The mode that the user selects
+ */
 function getModeSelection() {
 	var modeRadios = document.getElementsByName("mode");
 	var modeSelection = "Easy";
