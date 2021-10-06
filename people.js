@@ -95,4 +95,10 @@ var people = [
     picture: "Pictures/Erich.jpg",
     githubUsername: "zenlex",
   },
+  {
+    firstName: "Anthony",
+    lastName: "Hudspeth",
+    picture: "Pictures/Anthony.jpg",
+    githubUsername: "ahudspeth199",
+  },
 ];
