@@ -101,4 +101,10 @@ var people = [
     picture: "Pictures/Anthony.jpg",
     githubUsername: "ahudspeth199",
   },
+  {
+    firstName: "James",
+    lastName: "Deaton",
+    picture: "Pictures/James.jpg",
+    githubUsername: "okjed",
+  },
 ];
